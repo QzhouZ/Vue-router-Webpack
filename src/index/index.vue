@@ -1,6 +1,6 @@
 <template>
     <div class="success"></div>
-    <div class="btn" :click="fetch">加载数据</div>
+    <div class="btn" v-on:click="fetch">加载数据</div>
     <header-top v-if="data.length" :datalen="data.length"></header-top>
     <list v-if="data.length" :data="data"></list>
     <p>

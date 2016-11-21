@@ -14,5 +14,5 @@ Vue-router+Webpack实践
 
 ## 相关命令
 
-- ``npm run dev`` 开发模式,访问``http://127.0.0.1:3000/``
+- ``npm run dev`` 开发模式,访问``http://127.0.0.1:3000/dist``
 - ``npm run build`` 将文件编译,压缩,打包
