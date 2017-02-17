@@ -1,6 +1,7 @@
 <template>
     <div class="success"></div>
-    <div class="btn" v-on:click="fetch">加载数据</div>
+    <div class="btn" v-on:click="fetch">{{text}}</div>
+    <div class="btn" v-on:click="add">add</div>
     <header-top v-if="data.length" :datalen="data.length"></header-top>
     <list v-if="data.length" :data="data"></list>
     <p>
@@ -16,20 +17,34 @@
     export default {
         data() {
             return {
+                text: '加载数据',
                 data: []
             }
         },
         methods: {
             fetch() {
+                this.text = '正在加载';
                 reqwest({
-                    url: '/mock/home.json',
+                    url: '/article',
                     method: 'GET',
                     type: 'json',
                     success: (res) => {
-                        var data = res.data.newProduct;
-                        this.data = data;
+                        if (res.code) {
+                            this.data = res.data;
+                        }
+                        this.text = '加载数据';
                     }
-                })
+                });
+            },
+            add() {
+                reqwest({
+                    url: '/article',
+                    method: 'POST',
+                    type: 'json',
+                    success: (res) => {
+                        
+                    }
+                });
             }
         },
         components: { HeaderTop, List }
